@@ -91,7 +91,12 @@ public class PGPointType implements UserType {
      * @throws SQLException
      */
     public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException {
-        st.setObject(index, value);
+        if (value == null) {
+            st.setNull(index, Types.JAVA_OBJECT);
+        } else {
+            PGpoint v = (PGpoint) value;
+            st.setObject(index, v);
+        }
     }
 
     /**
