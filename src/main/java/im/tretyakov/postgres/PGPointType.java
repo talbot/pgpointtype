@@ -18,7 +18,7 @@ import java.sql.Types;
  *
  * @author tretyakov (dmitry@tretyakov.im)
  */
-public class PGPointType implements UserType {
+public class PGPointType extends PGpoint implements UserType {
 
     /**
      * Return the SQL type codes for the columns mapped by this type. The codes are defined on <tt>java.sql.Types</tt>.
@@ -92,7 +92,7 @@ public class PGPointType implements UserType {
      */
     public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException {
         if (value == null) {
-            st.setNull(index, Types.JAVA_OBJECT);
+            st.setObject(index, new PGpoint(0.0, 0.0));
         } else {
             PGpoint v = (PGpoint) value;
             st.setObject(index, v);
