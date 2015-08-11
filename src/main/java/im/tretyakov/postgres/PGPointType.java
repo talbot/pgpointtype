@@ -76,7 +76,8 @@ public class PGPointType extends PGpoint implements UserType {
         if (rs.wasNull()) {
             return null;
         }
-        return new PGpoint(rs.getObject(names[0]).toString());
+        final Object result = rs.getObject(names[0]);
+        return new PGpoint(result.toString());
     }
 
     /**
@@ -157,6 +158,11 @@ public class PGPointType extends PGpoint implements UserType {
      * @return the value to be merged
      */
     public Object replace(Object original, Object target, Object owner) throws HibernateException {
-        return this;
+        if (original instanceof PGpoint) {
+            final PGpoint value = (PGpoint) original;
+            return new PGpoint(value.x, value.y);
+        } else {
+            return new PGpoint(0.0, 0.0);
+        }
     }
 }
