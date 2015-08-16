@@ -16,7 +16,7 @@
         <java.target>1.7</java.target>
     </properties>
     <build>
-        <finalName>${project.name}-${project.version}.${project.packaging}</finalName>
+        <finalName>${project.name}-${project.version}</finalName>
     </build>
     <dependencies>
         <dependency>
