@@ -2,3 +2,6 @@
 
 # PostgresQL PGpoint type
 User type for PostgresQL PGpoint type.
+
+# Upload artifacts to GitHub
+[Nice post at SO](http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github)
