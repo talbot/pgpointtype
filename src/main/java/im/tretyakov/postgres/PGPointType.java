@@ -73,11 +73,13 @@ public class PGPointType extends PGpoint implements UserType {
      */
     public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
         assert names.length == 1;
-        if (rs.wasNull()) {
-            return null;
+        PGpoint result = null;
+        final Object point = rs.getObject(names[0]);
+        if (!rs.wasNull()) {
+            result = new PGpoint();
+            result.setValue(point.toString());
         }
-        final Object result = rs.getObject(names[0]);
-        return new PGpoint(result.toString());
+        return result;
     }
 
     /**

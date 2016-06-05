@@ -6,7 +6,7 @@
 
     <groupId>im.tretyakov</groupId>
     <artifactId>PostgresPointType</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
     <name>PGPointType</name>
     <description>User type for PostgresQL PGpoint type.</description>
     <packaging>jar</packaging>
